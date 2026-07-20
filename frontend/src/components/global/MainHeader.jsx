@@ -4,11 +4,14 @@ import HeaderBg from '../../assets/header_bg.png';
 
 const MainHeader = () => {
   return (
-    <header 
-      className="py-5 md:py-7 border-b border-gray-200 bg-no-repeat bg-right bg-white"
-      style={{ backgroundImage: `url(${HeaderBg})`, backgroundSize: 'auto 100%' }}
-    >
-      <div className="container-main flex flex-col md:flex-row justify-between items-center gap-6">
+    <header className="relative py-5 md:py-7 border-b border-gray-200 bg-white">
+      {/* Background Banner - Hanya tampil di desktop (md ke atas) agar tidak menimpa teks di mobile */}
+      <div 
+        className="hidden md:block absolute inset-0 bg-no-repeat bg-right pointer-events-none"
+        style={{ backgroundImage: `url(${HeaderBg})`, backgroundSize: 'auto 100%' }}
+      />
+      
+      <div className="relative z-10 container-main flex flex-col md:flex-row justify-between items-center gap-6">
         
         {/* Logo Section */}
         <div className="flex-1 flex justify-start">
