@@ -10,6 +10,7 @@ import BeritaDetail from './pages/BeritaDetail';
 import Galeri from './pages/Galeri';
 import Pengaduan from './pages/Pengaduan';
 import Kontak from './pages/Kontak';
+import AboutProject from './pages/AboutProject';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           {/* Pengaduan & Kontak Routes */}
           <Route path="pengaduan" element={<Pengaduan />} />
           <Route path="kontak" element={<Kontak />} />
+
+          {/* About Project Route */}
+          <Route path="tentang-website" element={<AboutProject />} />
 
           <Route path="ui-kit" element={<UIKit />} />
           

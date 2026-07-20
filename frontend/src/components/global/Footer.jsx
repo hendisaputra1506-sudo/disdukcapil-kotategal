@@ -38,6 +38,7 @@ const Footer = () => {
               <li><Link to="/berita" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline">Galeri & Berita</Link></li>
               <li><Link to="/pengaduan" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline">Pengaduan</Link></li>
               <li><Link to="/kontak" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline">Kontak</Link></li>
+              <li><Link to="/tentang-website" className="hover:text-white transition-colors focus-visible:outline-none focus-visible:underline">Tentang Website</Link></li>
             </ul>
           </div>
 
