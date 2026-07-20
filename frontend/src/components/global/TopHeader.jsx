@@ -38,6 +38,7 @@ const TopHeader = () => {
           <div className="flex items-center gap-5 pr-5 border-r border-gray-700 h-full">
             <Link to="/profil" className="hover:text-white focus-visible:text-white transition-colors h-full flex items-center">Tentang Kami</Link>
             <Link to="/kontak" className="hover:text-white focus-visible:text-white transition-colors h-full flex items-center">Hubungi Kami</Link>
+            <Link to="/tentang-website" className="hover:text-white focus-visible:text-white transition-colors h-full flex items-center">Tentang Website</Link>
           </div>
           
           {/* Stay Connected (Quick Contact) */}

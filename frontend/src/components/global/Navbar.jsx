@@ -68,6 +68,7 @@ const Navbar = () => {
     },
     { name: 'Pengaduan', path: '/pengaduan' },
     { name: 'Kontak', path: '/kontak' },
+    { name: 'Tentang Website', path: '/tentang-website' },
   ];
 
   return (
