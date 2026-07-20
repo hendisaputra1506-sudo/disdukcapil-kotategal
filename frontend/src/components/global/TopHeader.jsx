@@ -27,37 +27,37 @@ const TopHeader = () => {
 
   return (
     <div className="hidden md:block bg-brand-secondary text-gray-300 border-b-[3px] border-brand-primary">
-      <div className="container-main h-10 flex justify-between items-center text-[11px] font-bold uppercase tracking-widest">
+      <div className="container-main min-h-[40px] py-1 flex flex-wrap justify-between items-center gap-2 text-[11px] font-bold uppercase tracking-widest">
         {/* Left: Date */}
-        <div className="flex items-center h-full text-gray-400">
+        <div className="flex items-center text-gray-400">
           {currentDate}
         </div>
 
         {/* Right: Links, Social & Search */}
-        <div className="flex items-center h-full">
-          <div className="flex items-center gap-5 pr-5 border-r border-gray-700 h-full">
+        <div className="flex flex-wrap items-center">
+          <div className="flex items-center gap-3 lg:gap-5 pr-3 lg:pr-5 border-r border-gray-700">
             <Link to="/profil" className="hover:text-white focus-visible:text-white transition-colors h-full flex items-center">Tentang Kami</Link>
             <Link to="/kontak" className="hover:text-white focus-visible:text-white transition-colors h-full flex items-center">Hubungi Kami</Link>
             <Link to="/tentang-website" className="hover:text-white focus-visible:text-white transition-colors h-full flex items-center">Tentang Website</Link>
           </div>
           
           {/* Stay Connected (Quick Contact) */}
-          <div className="flex items-center gap-4 px-5 border-l border-gray-700 h-full">
+          <div className="flex items-center gap-3 lg:gap-4 px-3 lg:px-5 border-l border-gray-700">
             <div className="flex items-center gap-3">
-              <a href={contactData.contactLinks.whatsapp.url} target="_blank" rel="noopener noreferrer" aria-label={contactData.contactLinks.whatsapp.platform} className="hover:scale-110 transition-transform flex items-center h-full outline-none">
+              <a href={contactData.contactLinks.whatsapp.url} target="_blank" rel="noopener noreferrer" aria-label={contactData.contactLinks.whatsapp.platform} className="hover:scale-110 transition-transform flex items-center outline-none">
                 <img src={whatsappLogo} alt="WhatsApp" className="w-[14px] h-[14px]" />
               </a>
-              <a href={contactData.contactLinks.instagram.url} target="_blank" rel="noopener noreferrer" aria-label={contactData.contactLinks.instagram.platform} className="hover:scale-110 transition-transform flex items-center h-full outline-none">
+              <a href={contactData.contactLinks.instagram.url} target="_blank" rel="noopener noreferrer" aria-label={contactData.contactLinks.instagram.platform} className="hover:scale-110 transition-transform flex items-center outline-none">
                 <img src={instagramLogo} alt="Instagram" className="w-[14px] h-[14px]" />
               </a>
-              <a href={contactData.contactLinks.email.url} target="_blank" rel="noopener noreferrer" aria-label={contactData.contactLinks.email.platform} className="hover:scale-110 transition-transform flex items-center h-full outline-none">
+              <a href={contactData.contactLinks.email.url} target="_blank" rel="noopener noreferrer" aria-label={contactData.contactLinks.email.platform} className="hover:scale-110 transition-transform flex items-center outline-none">
                 <img src={gmailLogo} alt="Email" className="w-[14px] h-[14px]" />
               </a>
             </div>
           </div>
 
           {/* Search Button */}
-          <div className="pl-5 h-full flex items-center border-l border-gray-700">
+          <div className="pl-3 lg:pl-5 flex items-center border-l border-gray-700">
             <form onSubmit={handleSearchSubmit} className="relative flex items-center group">
               <input 
                 type="text" 

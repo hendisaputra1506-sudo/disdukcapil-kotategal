@@ -5,7 +5,6 @@ import {
 import whatsappLogo from '../assets/icons/whatsapp.svg';
 import instagramLogo from '../assets/icons/instagram.svg';
 import gmailLogo from '../assets/icons/gmail.svg';
-import phoneLogo from '../assets/icons/phone.svg';
 import PageLayout from '../layouts/PageLayout';
 import SectionTitle from '../components/ui/SectionTitle';
 import Card from '../components/ui/Card';
@@ -55,15 +54,6 @@ const Kontak = () => {
                     <a href="#maps" className="text-xs font-bold text-brand-primary hover:text-brand-secondary transition-colors inline-block">
                       Lihat di Google Maps &rarr;
                     </a>
-                  </div>
-                </div>
-
-                {/* Telepon */}
-                <div className="flex items-center gap-3">
-                  <IconBox iconSrc={phoneLogo} size="sm" variant="default" className="bg-gray-100 text-gray-600 shrink-0" circle />
-                  <div>
-                    <p className="text-sm font-bold text-gray-800">{contactData.contactLinks.phone.platform}</p>
-                    <p className="text-sm text-gray-600">{contactData.contactLinks.phone.value}</p>
                   </div>
                 </div>
 

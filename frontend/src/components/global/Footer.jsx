@@ -8,7 +8,7 @@ import { contactData } from '../../data/contact';
 
 const Footer = () => {
   return (
-    <footer className="bg-brand-secondary text-gray-300 pt-12 pb-6 border-t-[3px] border-brand-primary mt-auto">
+    <footer className="bg-brand-secondary text-gray-300 pt-10 pb-6 border-t-[3px] border-brand-primary mt-auto">
       <div className="container-main">
         {/* Konten Utama Footer */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">

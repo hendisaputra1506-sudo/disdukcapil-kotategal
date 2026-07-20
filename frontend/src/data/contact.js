@@ -39,6 +39,7 @@ export const contactData = {
       icon: "phone.svg",
       description: "Pada jam kerja"
     },
+
     maps: {
       platform: "Google Maps",
       label: "Gedung Pelayanan Terpadu",
