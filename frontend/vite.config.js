@@ -12,15 +12,15 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  publicDir: '../../assets',
+  publicDir: '../assets',
   resolve: {
     alias: {
-      '@assets': path.resolve(__dirname, '../../assets')
+      '@assets': path.resolve(__dirname, '../assets')
     }
   },
   server: {
     fs: {
-      allow: ['../..']
+      allow: ['..']
     }
   }
 })
