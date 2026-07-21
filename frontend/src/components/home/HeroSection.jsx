@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import HeroMainCard from './HeroMainCard';
+import HeroThumbnailCard from './HeroThumbnailCard';
 import SectionContainer from '../shared/SectionContainer';
 import { newsData } from '../../data/news';
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [tickerIndex, setTickerIndex] = useState(0);
+  
+  // Carousel news
   const featuredNews = newsData.slice(0, 5);
+  // Thumbnails (berita lainnya)
+  const thumbnailNews = newsData.slice(1, 5); 
+  
   const scrollRef = useRef(null);
 
   // Auto-scroll for Carousel
@@ -76,40 +82,49 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-card overflow-hidden group shadow-md">
-        
-        {/* CSS for hiding scrollbar */}
-        <style>{`
-          .hero-slider::-webkit-scrollbar {
-            display: none;
-          }
-        `}</style>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+        {/* Left Side: Carousel */}
+        <div className="lg:col-span-8 relative w-full h-[240px] md:h-[360px] lg:h-[460px] rounded-card overflow-hidden group shadow-md">
+          {/* CSS for hiding scrollbar */}
+          <style>{`
+            .hero-slider::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
 
-        {/* Swipeable Container */}
-        <div 
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="flex w-full h-full overflow-x-auto snap-x snap-mandatory hero-slider"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {featuredNews.map((news) => (
-            <div key={news.id} className="w-full h-full shrink-0 snap-center relative">
-              <HeroMainCard {...news} />
-            </div>
-          ))}
+          {/* Swipeable Container */}
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex w-full h-full overflow-x-auto snap-x snap-mandatory hero-slider"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {featuredNews.map((news) => (
+              <div key={news.id} className="w-full h-full shrink-0 snap-center relative">
+                <HeroMainCard {...news} />
+              </div>
+            ))}
+          </div>
+          
+          {/* Navigation Dots */}
+          <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
+            {featuredNews.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`h-2.5 rounded-full transition-all duration-300 shadow-sm ${
+                  index === currentIndex ? 'bg-brand-primary w-8' : 'bg-white/70 hover:bg-white w-2.5'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
-        
-        {/* Navigation Dots */}
-        <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
-          {featuredNews.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => scrollTo(index)}
-              className={`h-2.5 rounded-full transition-all duration-300 shadow-sm ${
-                index === currentIndex ? 'bg-brand-primary w-8' : 'bg-white/70 hover:bg-white w-2.5'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+
+        {/* Right Side: Thumbnails */}
+        <div className="lg:col-span-4 flex flex-col gap-4 h-auto lg:h-[460px]">
+          {thumbnailNews.map((news, index) => (
+            <HeroThumbnailCard key={`${news.id}-${index}`} {...news} />
           ))}
         </div>
       </div>
