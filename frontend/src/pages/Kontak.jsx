@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { 
-  ChevronDown, Navigation, MapPin, Clock
+  ChevronDown, Navigation
 } from 'lucide-react';
+import locationIcon from '@assets/icons/location.png';
+import clockIcon from '@assets/icons/clock.png';
 import whatsappLogo from '@assets/icons/whatsapp.svg';
 import instagramLogo from '@assets/icons/instagram.svg';
 import gmailLogo from '@assets/icons/gmail.svg';
@@ -44,7 +46,7 @@ const Kontak = () => {
               <div className="flex flex-col gap-5">
                 {/* Alamat */}
                 <div className="flex items-start gap-3">
-                  <IconBox icon={MapPin} size="sm" variant="brand" className="bg-brand-secondary/5 text-brand-primary shrink-0" circle />
+                  <IconBox iconSrc={locationIcon} size="sm" variant="brand" className="bg-brand-secondary/5 shrink-0" circle />
                   <div>
                     <p className="text-sm font-bold text-gray-800 mb-0.5">Alamat Kantor</p>
                     <p className="text-sm text-gray-600 mb-2 leading-relaxed">
@@ -90,7 +92,7 @@ const Kontak = () => {
 
                 {/* Jam Pelayanan (Vertikal Layout) */}
                 <div className="flex items-start gap-3">
-                  <IconBox icon={Clock} size="sm" variant="warning" className="bg-amber-50 text-amber-600 shrink-0" circle />
+                  <IconBox iconSrc={clockIcon} size="sm" variant="warning" className="bg-amber-50 shrink-0" circle />
                   <div className="w-full">
                     <p className="text-sm font-bold text-gray-800 mb-2">Jam Pelayanan</p>
                     
