@@ -2,7 +2,7 @@ const db = require('./database');
 
 async function prepareDatabase() {
     try {
-        console.log('🔄 Memulai persiapan database disdukcapil_admin...');
+        console.log(`🔄 Memulai persiapan database ${process.env.DB_NAME || 'disdukcapil_admin'}...`);
 
         // ==========================================
         // BAGIAN A: Migration password_changed_at

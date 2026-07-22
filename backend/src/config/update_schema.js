@@ -3,29 +3,31 @@ require('dotenv').config();
 
 async function initDatabaseAndSchema() {
     try {
-        console.log('🔄 Memeriksa & menginisialisasi database disdukcapil_admin...');
+        const dbName = process.env.DB_NAME || 'disdukcapil_admin';
+        console.log(`🔄 Memeriksa & menginisialisasi database ${dbName}...`);
 
-        // 1. Koneksi tanpa spesifik nama database untuk membuat database jika belum ada
-        const rootConnection = await mysql.createConnection({
+        const rootConfig = {
             host: process.env.DB_HOST || 'localhost',
             user: process.env.DB_USER || 'root',
             password: process.env.DB_PASSWORD || '',
             port: process.env.DB_PORT || 3306
-        });
+        };
 
-        const dbName = process.env.DB_NAME || 'disdukcapil_admin';
+        if (process.env.DB_SSL_CA) {
+            rootConfig.ssl = { ca: process.env.DB_SSL_CA };
+        }
+
+        // 1. Koneksi tanpa spesifik nama database untuk membuat database jika belum ada
+        const rootConnection = await mysql.createConnection(rootConfig);
+
         await rootConnection.query(`CREATE DATABASE IF NOT EXISTS \`${dbName}\`;`);
         console.log(`✅ Database \`${dbName}\` tersedia.`);
         await rootConnection.end();
 
-        // 2. Koneksi langsung ke database disdukcapil_admin
-        const db = await mysql.createConnection({
-            host: process.env.DB_HOST || 'localhost',
-            user: process.env.DB_USER || 'root',
-            password: process.env.DB_PASSWORD || '',
-            database: dbName,
-            port: process.env.DB_PORT || 3306
-        });
+        const dbConfig = { ...rootConfig, database: dbName };
+
+        // 2. Koneksi langsung ke database 
+        const db = await mysql.createConnection(dbConfig);
 
         // 3. Buat tabel users jika belum ada
         const createTableUsers = `
