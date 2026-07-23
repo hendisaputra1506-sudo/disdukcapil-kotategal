@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Users, Baby, Activity, LayoutTemplate, User, CheckCircle, Clock, Monitor } from 'lucide-react';
 import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout';
-import HeroSection from '../components/home/HeroSection';
+import HeadlineTicker from '../components/home/HeadlineTicker';
+import HeroGallery from '../components/home/HeroGallery';
+import LatestNewsGrid from '../components/home/LatestNewsGrid';
 import LatestNewsSection from '../components/home/LatestNewsSection';
 import RightSidebar from '../components/global/RightSidebar';
 import FeaturedServicesSection from '../components/home/FeaturedServicesSection';
@@ -28,8 +30,14 @@ const Home = () => {
 
   return (
     <div className="w-full">
-      {/* 1. Hero Banner Area */}
-      <HeroSection />
+      {/* 0. Headline Ticker */}
+      <HeadlineTicker />
+
+      {/* 1. Hero Gallery Carousel */}
+      <HeroGallery />
+      
+      {/* 1.5. Latest News Grid */}
+      <LatestNewsGrid />
 
       {/* 2. Quick Services (Shortcut Layanan) */}
       <SectionContainer className="bg-white pb-6 pt-10">
