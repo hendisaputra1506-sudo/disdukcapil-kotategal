@@ -82,7 +82,7 @@ const LatestNewsGrid = () => {
   }
 
   return (
-    <SectionContainer background="white" className="pt-8 pb-12 border-b border-border-subtle">
+    <SectionContainer background="white" className="pt-8 pb-6 border-b border-border-subtle">
       <div className="flex justify-between items-end mb-6">
         <div>
           <h2 className="text-2xl md:text-3xl font-extrabold text-brand-primary">Berita Terbaru</h2>

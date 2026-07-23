@@ -5,9 +5,9 @@ import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout';
 import HeadlineTicker from '../components/home/HeadlineTicker';
 import HeroGallery from '../components/home/HeroGallery';
 import LatestNewsGrid from '../components/home/LatestNewsGrid';
-import LatestNewsSection from '../components/home/LatestNewsSection';
 import RightSidebar from '../components/global/RightSidebar';
 import FeaturedServicesSection from '../components/home/FeaturedServicesSection';
+import PopularNewsSection from '../components/home/PopularNewsSection';
 import Card from '../components/ui/Card';
 import SectionContainer from '../components/shared/SectionContainer';
 
@@ -40,7 +40,7 @@ const Home = () => {
       <LatestNewsGrid />
 
       {/* 2. Quick Services (Shortcut Layanan) */}
-      <SectionContainer className="bg-white pb-6 pt-10">
+      <SectionContainer className="bg-white pb-4 pt-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {quickServices.map((service, idx) => {
             const Icon = service.icon;
@@ -61,9 +61,9 @@ const Home = () => {
       </SectionContainer>
 
       {/* 3. Transition Section & Statistics */}
-      <SectionContainer className="bg-white pt-2 pb-14 text-center">
-        <div className="max-w-3xl mx-auto mb-10">
-          <h2 className="text-2xl font-bold text-brand-secondary mb-4 uppercase tracking-tight">
+      <SectionContainer className="bg-white pt-2 pb-8 text-center">
+        <div className="max-w-3xl mx-auto mb-8">
+          <h2 className="text-2xl font-bold text-brand-secondary mb-3 uppercase tracking-tight">
             Layanan Unggulan Disdukcapil Kota Tegal
           </h2>
           <p className="text-gray-600 leading-relaxed text-sm md:text-base">
@@ -86,12 +86,12 @@ const Home = () => {
       </SectionContainer>
 
       {/* 4. Main Content (Berita + Layanan) & Sidebar */}
-      <div className="pt-14 md:pt-16 pb-16 md:pb-20 bg-gray-50 border-b border-border-subtle">
+      <div className="pt-8 md:pt-10 pb-16 md:pb-20 bg-gray-50 border-b border-border-subtle">
         <ContentWithSidebarLayout 
           mainContent={
             <>
-              <LatestNewsSection />
               <FeaturedServicesSection />
+              <PopularNewsSection />
             </>
           }
           sidebarContent={<RightSidebar />}

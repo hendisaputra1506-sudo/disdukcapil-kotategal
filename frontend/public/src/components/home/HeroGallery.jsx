@@ -66,7 +66,9 @@ const HeroGallery = () => {
         
         const children = container.querySelectorAll('.gallery-item');
         if (children[nextIndex]) {
-           children[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+           const child = children[nextIndex];
+           const scrollPosition = child.offsetLeft - (container.clientWidth / 2) + (child.clientWidth / 2);
+           container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
         }
       }
     }, 5000);
@@ -75,9 +77,12 @@ const HeroGallery = () => {
 
   const scrollTo = (index) => {
     if (scrollRef.current) {
-      const children = scrollRef.current.querySelectorAll('.gallery-item');
+      const container = scrollRef.current;
+      const children = container.querySelectorAll('.gallery-item');
       if (children[index]) {
-        children[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        const child = children[index];
+        const scrollPosition = child.offsetLeft - (container.clientWidth / 2) + (child.clientWidth / 2);
+        container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
         setCurrentIndex(index);
       }
     }
@@ -109,7 +114,7 @@ const HeroGallery = () => {
     return (
       <SectionContainer background="white" className="pt-2 pb-6">
         <div className="w-full flex justify-center py-4">
-          <div className="w-[90%] md:w-[75%] lg:w-[65%] aspect-[16/9] md:aspect-[21/9] bg-gray-200 animate-pulse rounded-2xl"></div>
+          <div className="w-[90%] md:w-[75%] lg:w-[65%] aspect-[4/3] md:aspect-[16/9] bg-gray-200 animate-pulse rounded-2xl"></div>
         </div>
       </SectionContainer>
     );
@@ -146,7 +151,7 @@ const HeroGallery = () => {
                 }`}
                 onClick={() => scrollTo(index)}
               >
-                <div className="relative aspect-[16/9] md:aspect-[21/9] w-full">
+                <div className="relative aspect-[4/3] md:aspect-[16/9] w-full">
                   <img 
                     src={gallery.imageUrl} 
                     alt={gallery.title}

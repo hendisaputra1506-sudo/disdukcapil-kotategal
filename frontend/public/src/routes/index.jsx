@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import RootLayout from '../components/layout/RootLayout'
-import HomePage from '../pages/HomePage'
+import Home from '../pages/Home'
 import Berita from '../pages/Berita'
 import BeritaDetail from '../pages/BeritaDetail'
 import LayananPublikPage from '../pages/LayananPublikPage'
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <Home />,
       },
       {
         path: 'profil',

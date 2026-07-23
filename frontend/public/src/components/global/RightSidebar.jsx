@@ -47,20 +47,6 @@ const RightSidebar = () => {
           ))}
         </div>
       </WidgetCard>
-
-      {/* 4. Berita Pilihan */}
-      <WidgetCard title="Berita Pilihan">
-        <ul className="space-y-4">
-          {sidebarData.beritaPilihan.map(item => (
-            <li key={item.id} className="group cursor-pointer">
-              <Link to={`/berita/${item.slug}`} className="text-sm font-bold text-brand-secondary group-hover:text-brand-primary line-clamp-2 leading-snug transition-colors">
-                {item.title}
-              </Link>
-              <span className="text-xs text-gray-500 mt-1 block font-medium">{item.date}</span>
-            </li>
-          ))}
-        </ul>
-      </WidgetCard>
     </aside>
   );
 };
