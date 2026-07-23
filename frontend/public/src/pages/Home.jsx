@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Users, Baby, Activity, LayoutTemplate, User, CheckCircle, Clock, Monitor } from 'lucide-react';
 import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout';
-import HeroSection from '../components/home/HeroSection';
+import HeroBanner from '../components/home/HeroBanner';
 import LatestNewsSection from '../components/home/LatestNewsSection';
 import RightSidebar from '../components/global/RightSidebar';
 import FeaturedServicesSection from '../components/home/FeaturedServicesSection';
@@ -29,7 +29,9 @@ const Home = () => {
   return (
     <div className="w-full">
       {/* 1. Hero Banner Area */}
-      <HeroSection />
+      <SectionContainer background="white" className="pt-6 pb-12 md:pt-8 border-b border-border-subtle">
+        <HeroBanner />
+      </SectionContainer>
 
       {/* 2. Quick Services (Shortcut Layanan) */}
       <SectionContainer className="bg-white pb-6 pt-10">
