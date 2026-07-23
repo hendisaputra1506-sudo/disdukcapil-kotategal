@@ -49,6 +49,7 @@ const newsRoutes = require('./routes/newsRoutes');
 const bannerRoutes = require('./routes/bannerRoutes');
 const galleryRoutes = require('./routes/galleryRoutes');
 const documentRoutes = require('./routes/documentRoutes');
+const settingsRoutes = require('./routes/settingsRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/news', newsRoutes);
@@ -56,6 +57,7 @@ app.use('/api/banners', bannerRoutes);
 app.use('/api/banner', bannerRoutes); // Alias route support
 app.use('/api/gallery', galleryRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/settings', settingsRoutes);
 
 // Route dasar untuk tes kesehatan API
 app.get('/api', (req, res) => {

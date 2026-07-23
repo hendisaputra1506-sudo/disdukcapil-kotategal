@@ -133,7 +133,9 @@ export function GalleryForm() {
     if (imagePreview) return imagePreview;
     if (existingImage) {
       if (existingImage.startsWith('http')) return existingImage;
-      return `${BASE_URL}${existingImage}`;
+      const baseDomain = BASE_URL.replace(/\/api\/?$/, '');
+      const normalizedPath = existingImage.startsWith('/') ? existingImage : `/${existingImage}`;
+      return `${baseDomain}${normalizedPath}`;
     }
     return null;
   };

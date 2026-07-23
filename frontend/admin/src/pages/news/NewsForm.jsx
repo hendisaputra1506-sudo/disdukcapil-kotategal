@@ -176,7 +176,9 @@ export function NewsForm() {
     if (thumbnailPreview) return thumbnailPreview;
     if (existingThumbnail) {
       if (existingThumbnail.startsWith('http')) return existingThumbnail;
-      return `${BASE_URL}${existingThumbnail}`;
+      const baseDomain = BASE_URL.replace(/\/api\/?$/, '');
+      const normalizedPath = existingThumbnail.startsWith('/') ? existingThumbnail : `/${existingThumbnail}`;
+      return `${baseDomain}${normalizedPath}`;
     }
     return null;
   };

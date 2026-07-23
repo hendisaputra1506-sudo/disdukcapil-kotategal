@@ -104,7 +104,9 @@ export function GalleryList() {
   const getImageSrc = (path) => {
     if (!path) return '';
     if (path.startsWith('http')) return path;
-    return `${BASE_URL}${path}`;
+    const baseDomain = BASE_URL.replace(/\/api\/?$/, '');
+    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+    return `${baseDomain}${normalizedPath}`;
   };
 
   return (

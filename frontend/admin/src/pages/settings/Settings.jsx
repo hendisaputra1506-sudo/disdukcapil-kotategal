@@ -1,29 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Settings as SettingsIcon, Image as ImageIcon } from 'lucide-react';
 import { Button } from '../../components/ui/Button';
 import { Input } from '../../components/ui/Input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '../../components/ui/Card';
+import { getSettings, updateSettings } from '../../services/settingsService';
 
 export function Settings() {
   const [formData, setFormData] = useState({
-    address: 'Jl. Lele No.14, Tegalsari, Kec. Tegal Bar., Kota Tegal, Jawa Tengah 52111',
-    email: 'disdukcapil@tegalkota.go.id',
-    phone: '(0283) 351052',
-    facebook: 'https://facebook.com/disdukcapiltegal',
-    instagram: 'https://instagram.com/disdukcapiltegal',
-    x: 'https://x.com/disdukcapiltegal',
-    tiktok: 'https://tiktok.com/@disdukcapiltegal',
+    address: '',
+    email: '',
+    phone: '',
+    facebook: '',
+    instagram: '',
+    x: '',
+    tiktok: '',
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const res = await getSettings();
+        if (res?.success && res.data) {
+          setFormData({
+            address: res.data.address || '',
+            email: res.data.email || '',
+            phone: res.data.phone || '',
+            facebook: res.data.facebook_url || '',
+            instagram: res.data.instagram_url || '',
+            x: res.data.youtube_url || '', // We mapped this temporarily
+            tiktok: '',
+          });
+        }
+      } catch (error) {
+        console.error('Failed to fetch settings', error);
+      }
+    };
+    fetchSettings();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // MOCK FLOW: Show toast or just nothing for now
-    alert('Pengaturan berhasil disimpan! (MOCK)');
+    setIsLoading(true);
+    try {
+      const res = await updateSettings(formData);
+      if (res?.success) {
+        alert('Pengaturan berhasil disimpan!');
+      } else {
+        alert(res?.message || 'Gagal menyimpan pengaturan.');
+      }
+    } catch (error) {
+      alert('Terjadi kesalahan saat menyimpan pengaturan.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
