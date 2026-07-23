@@ -57,8 +57,9 @@ exports.login = async (req, res) => {
         );
 
         // Pasang HttpOnly Cookie secara aman
-        const isSecure = process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production';
-        const sameSiteSetting = process.env.COOKIE_SAME_SITE || 'lax';
+        const isProduction = process.env.NODE_ENV === 'production';
+        const isSecure = isProduction || process.env.COOKIE_SECURE === 'true';
+        const sameSiteSetting = isProduction ? 'none' : 'lax';
 
         res.cookie('adminToken', token, {
             httpOnly: true,
@@ -95,8 +96,9 @@ exports.login = async (req, res) => {
 // 2. LOGOUT
 exports.logout = async (req, res) => {
     try {
-        const isSecure = process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production';
-        const sameSiteSetting = process.env.COOKIE_SAME_SITE || 'lax';
+        const isProduction = process.env.NODE_ENV === 'production';
+        const isSecure = isProduction || process.env.COOKIE_SECURE === 'true';
+        const sameSiteSetting = isProduction ? 'none' : 'lax';
 
         res.clearCookie('adminToken', {
             httpOnly: true,
@@ -213,8 +215,9 @@ exports.changePassword = async (req, res) => {
         );
 
         // Invalidate session di client (Hapus HttpOnly Cookie)
-        const isSecure = process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production';
-        const sameSiteSetting = process.env.COOKIE_SAME_SITE || 'lax';
+        const isProduction = process.env.NODE_ENV === 'production';
+        const isSecure = isProduction || process.env.COOKIE_SECURE === 'true';
+        const sameSiteSetting = isProduction ? 'none' : 'lax';
 
         res.clearCookie('adminToken', {
             httpOnly: true,
