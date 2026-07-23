@@ -5,7 +5,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 const getFullImageUrl = (imagePath) => {
   if (!imagePath) return null;
   if (imagePath.startsWith('http')) return imagePath;
-  const baseUrl = API_BASE_URL.replace(/\/$/, '');
+  const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
   return `${baseUrl}${imagePath}`;
 };
 

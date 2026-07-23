@@ -9,7 +9,7 @@ const getFullImageUrl = (imagePath) => {
   if (!imagePath) return null;
   if (imagePath.startsWith('http')) return imagePath;
   // Hilangkan trailing slash dari API_BASE_URL jika ada
-  const baseUrl = API_BASE_URL.replace(/\/$/, '');
+  const baseUrl = API_BASE_URL.replace(/\/api\/?$/, '');
   return `${baseUrl}${imagePath}`;
 };
 
